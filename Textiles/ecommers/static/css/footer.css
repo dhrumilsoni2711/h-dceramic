@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+      
+body {
+    min-height: 100vh;
+    width: 100%;
+    background: #EEECEB;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+footer {
+    width: 100%;
+    background-color: #fff;
+    color: #9f9f9f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    height: 500px;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .foot {
+    display: flex;
+    width: 100%;
+  }
+  
+  .penal {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: left;
+    margin-left: 120px;
+    margin-top: 10px;
+  }
+  
+  .penal1 {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    font-size: 20px;
+    justify-content: flex-start;
+    text-align: left;
+    width: 250px;
+    margin-left: 50px;
+    margin-bottom: 100px;
+  }
+  
+  .penal1 p {
+    margin-top: 40px;
+  }
+  
+  .penal1 h2 {
+    color: black;
+    font-size: 25px;
+  }
+  .ii{
+    margin-left: 10px;
+  }
+  
+  .penal2 {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    font-size: 20px;
+    justify-content: flex-start;
+    text-align: left;
+    width: 120px;
+    margin-left: 100px;
+    margin-bottom: 100px;
+  }
+  
+  .penal2 a {
+    margin-top: 40px;
+    font-weight: 500;
+    color: black;
+    text-decoration: none;
+  }
+  
+  .penal3 {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    font-size: 20px;
+    justify-content: flex-start;
+    text-align: left;
+    width: 180px;
+    margin-left: 100px;
+    margin-bottom: 100px;
+  }
+  
+  .penal3 div {
+    margin-top: 40px;
+    font-weight: 500;
+    color: black;
+  }
+  
+  .penal4 {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    font-size: 20px;
+    justify-content: flex-start;
+    text-align: left;
+    width: 400px;
+    margin-left: 100px;
+    margin-bottom: 100px;
+  }
+  
+  .penal4 div {
+    margin-top: 40px;
+    font-weight: 500;
+    color: black;
+  }
+  
+  .butt {
+    margin-left: 10px;
+  }
+  
+  
+  
+  .foot-bottom {
+    width: 80%;
+    background-color: #ffffff;
+    margin-right: 10px;
+    padding: 10px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    border-top: 2px solid #ccc;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    margin-left: 50px;
+  }
+  

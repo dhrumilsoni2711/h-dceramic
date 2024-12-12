@@ -1,0 +1,112 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  background: #EEECEB;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+a{
+    text-decoration: none;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: #CD7F32;
+    box-shadow: none;
+    border: none
+}
+
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+.custom-list-group {
+    width: 300px; 
+    margin-top: 50px; 
+  }
+
+  .custom-list-group .list-group-item {
+    border-left: none; 
+    border-right: none; 
+  }
+  .move-up {
+    margin-top: -20px; 
+  }
+  .buty{
+      background-color: #d4a551;
+      color: #fff;
+  }
+
+  .section {
+    display: none;
+  }
+
+  .active-section {
+    display: block;
+  }
+
+
+  /* General alert styles */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Success alert customization */
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: none; /* Removes the border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a soft shadow */
+}
+
+/* Additional margin for spacing */
+.mt-3 {
+    margin-top: 1rem;
+}
+
+/* Font weight for strong text */
+.alert strong {
+    font-weight: bold;
+}

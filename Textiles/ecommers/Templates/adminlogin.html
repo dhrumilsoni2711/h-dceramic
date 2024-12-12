@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/adminlogin.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Admin Login</title>
+</head>
+<body>
+   
+    <div class="container">
+        <h2 class="title">Admin Login</h2>
+    
+        <div class="who">
+            <button class="user" id="userid"><i class="fa-solid fa-user"></i> User</button>
+            <button class="admin" id="adminid"><i class="fa-solid fa-user-tie"></i> Admin</button>
+        </div>
+        <form action="{% url 'adminlogin' %}" method="post" class="form-container">
+            {% csrf_token %}
+            
+            <div class="input-box email">
+                <input type="text" name="a_name" required placeholder="Admin Name" value="{{ form.a_name.value|default_if_none:'' }}">
+                <img src="https://cdn-icons-png.flaticon.com/512/6325/6325109.png" alt="user-image" width="25px">
+                {{ form.a_name.errors }}
+            </div>
+            <div class="input-box password">
+                <input type="password" name="a_password" required placeholder="Password">
+                <img src="https://cdn-icons-png.flaticon.com/512/2489/2489659.png" alt="lock-image" width="22px">
+                {{ form.a_password.errors }}
+            </div>
+
+            {% if error %}
+                <p style="color: red;text-align: left;font-size: 14px;margin-top: 5px;margin-left: 5px;"><b>{{ error }}</b></p>
+            {% endif %}
+            
+            
+            <div class="button">
+                <button type="submit" class="login">Login</button>
+            </div>
+            <div class="register">
+                <p><i class="fa-solid fa-circle-exclamation spac"></i> This is only for Admin!</p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('userid').addEventListener('click', function() {
+                window.location.href = '{% url "login" %}';
+            });
+            document.getElementById('adminid').addEventListener('click', function() {
+                window.location.href = '{% url "adminlogin" %}';
+            });
+        });
+    </script>
+
+</body>
+</html>

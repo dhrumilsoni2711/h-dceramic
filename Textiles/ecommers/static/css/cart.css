@@ -1,0 +1,245 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  body {
+    min-height: 100vh;
+    width: 100%;
+    background: #EEECEB;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+      .title {
+        margin-bottom: 5vh;
+      }
+
+      .card {
+        margin: 70px 5% 50px;
+        height:auto;
+        width: 90%;
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 1rem;
+        border: transparent;
+        display:flex;
+       
+      }
+
+      @media(max-width:767px) {
+        .card {
+          margin: 3vh auto;
+        }
+      }
+      .name{
+        color: black;
+      }
+      .cart {
+        background-color: #fff;
+        padding-top: 15px;
+        display:block;
+        border-bottom-left-radius: 1rem;
+        border-top-left-radius: 1rem;
+      }
+
+      @media(max-width:767px) {
+        .cart {
+          padding: 4vh;
+          border-bottom-left-radius: unset;
+          border-top-right-radius: 1rem;
+        }
+      }
+      .he{
+        margin-top:8px;
+      }
+    
+      .summary {
+        background-color: #ddd;
+        border-top-right-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        padding: 4vh;
+        color: rgb(65, 65, 65);
+      }
+
+      @media(max-width:767px) {
+        .summary {
+          border-top-right-radius: unset;
+          border-bottom-left-radius: 1rem;
+        }
+      } 
+
+      .summary .col-2 {
+        padding: 0;
+      }
+
+      .summary .col-10 {
+        padding: 0;
+      }
+
+      .row {
+        margin-left: 10px;
+        font-size: 20px;
+      }
+
+      .title b {
+        font-size: 2.5rem;
+      }
+
+      .main {
+        margin: 0;
+        padding: 2vh 0;
+        width: 100%;
+      }
+
+      .col-2, .col {
+        padding: 0 1vh;
+        
+      }
+
+      .a {
+        padding: 0 1vh;
+      }
+
+      .close {
+        background-color: white;
+        margin-left: auto;
+        font-size: 1.5rem;
+        margin-right: 60px;
+        border:none;
+      }
+      .close:focus {
+        box-shadow: none;
+        outline: none;
+        border: none;
+      }
+
+      .img {
+        width: 300px;
+        height: auto;
+        margin-top: 10px;
+        margin-left: 10px;
+        size: cover;
+      }
+
+      .card-image img {
+        width: 100%;
+        object-fit: fill;
+        border-radius: 10px;
+        height: 150px;
+    }
+      
+
+      hr {
+        margin-top: 1.25rem;
+      }
+
+      form {
+        padding: 2vh 0;
+      }
+
+      .total{
+        margin-top: 40px;
+      }
+      .totalp{
+        margin-top: 40px;
+        margin-left: 140px;
+      }
+
+      .btn {
+       color: #fff; 
+       background-color: #CD7F32;  
+        width: 50%;
+        font-size: 1.7rem;
+        border-radius:5px;
+        border: black;
+        margin-left: 20px;
+        margin-top: 30px;
+        
+      }
+
+      .btn:focus {
+        box-shadow: none;
+        outline: none;
+        border: none;
+        box-shadow: none;
+        color: rgb(0, 0, 0);
+        -webkit-box-shadow: none;
+       
+        transition: none; 
+      }
+
+      
+
+      .a {
+        color: black; 
+      }
+
+      .a:hover {
+        color: black; 
+        text-decoration: none;
+      }
+      .qut{
+        display:flex;
+        align-items: center;
+      }
+      .btns{
+        background-color:white;
+        border:none;
+        margin-left:10px;
+        margin-right:10px;
+      }.btns:focus {
+        box-shadow: none;
+        outline: none;
+        border: none;
+        color: white;
+        
+      }
+
+      .qua{
+        margin-top:5px;
+
+
+      }
+
+      #code {
+        background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+        background-repeat: no-repeat;
+        background-position-x: 95%;
+        background-position-y: center;
+      }
+
+
+
+
+/* General alert styles */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Success alert customization */
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: none; /* Removes the border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a soft shadow */
+}
+
+/* Additional margin for spacing */
+.mt-3 {
+  margin-top: 1rem;
+}
+
+/* Font weight for strong text */
+.alert strong {
+  font-weight: bold;
+}
+
+      

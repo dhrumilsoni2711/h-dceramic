@@ -1,0 +1,176 @@
+{% include 'nav.html'%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+   
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{% static 'css/shop.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">    
+    <script src="{% static 'js/alert.js' %}"></script>
+</head>
+<body>
+  
+  {% if messages %}
+        {% for message in messages %}
+            <div id="alert-message" style="display: none;">{{ message }}</div>
+        {% endfor %}
+  {% endif %}
+  
+      <div class="slider-container">
+        <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="slider">
+            <div class="card-container">
+                {% for category in categories %}
+                <div class="card" id="{{ category.c_id }}" onclick="showCategoryInfo(this.id)">
+                    <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                    <h1>{{ category.name }}</h1>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+
+    <div class="pro">
+        {% for category in categories %}
+        <div class="pro-head" id="pro-head-{{ category.c_id }}">
+            <h1>{{ category.name }}</h1>
+            <p class="desc">{{ category.description }}</p>
+            
+            <div class="product-grid">
+                {% for product in products %}
+                    {% if product.category == category.name %}
+                        {% comment %} {% if forloop.counter > 9 %}
+                            <button class="now" data-category-id="{{ category.c_id }}">Show More  <i class="fa-solid fa-chevron-down"></i></button>
+                            <div class="product-card" style="display: none;"> {% endcomment %}
+                        {% comment %} {% else %} {% endcomment %}
+                            <div class="product-card">
+                        {% comment %} {% endif %} {% endcomment %}
+                            <div class="product-image">
+                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                            </div>
+                            <div class="product-details">
+                                <h3 class="product-name">{{ product.name }}</h3>
+                                <p class="product-price">MRP ₹{{ product.price }} /- Box</p>
+                                <p class="product-size">Size: {{ product.size }}</p>
+                                <p class="product-note">Note: Per Box cover 
+                                {% if product.size == "600 x 600" %}
+                                    38.74 Sq ft.
+                                {% elif product.size == "300 x 300" %}
+                                    9.68 Sq ft.
+                                {% elif product.size == "600 x 1200" %}
+                                    77.50 Sq ft.
+                                {% else %}
+                                    Unknown size.
+                                {% endif %}</p>
+                                <div class="product-actions">
+                            
+                                    
+                                    <form action="{% url 'shop' %}" method="post" style="display: inline;">  
+                                        {% csrf_token %}  
+                                        <input type="hidden" name="product_id" value="{{ product.p_id }}">  
+                                        <button type="submit" name="cart" class="buy-now">Add to Cart</button>  
+                                      </form>  
+
+                                </div>
+                                
+                            </div>
+                           
+                        </div>
+                    {% endif %}
+                {% endfor %}
+    
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
+    {% include 'footer.html' %}
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cardContainer = document.querySelector('.card-container');
+            const nextBtn = document.querySelector('.next-btn');
+            const prevBtn = document.querySelector('.prev-btn');
+            const cards = document.querySelectorAll('.card');
+            const cardCount = cards.length;
+            const cardWidth = cards[0].offsetWidth + 20; // Adjust this in CSS if needed
+            const visibleCards = 7;  // Show 7 cards at a time
+            let currentIndex = 0;
+            const slideInterval = 2000; // Time in milliseconds (3 seconds)
+    
+            // Function to move to the next slide
+            function nextSlide() {
+                if (currentIndex < cardCount - visibleCards) {
+                    currentIndex++;
+                } else {
+                    currentIndex = 0; // Reset to the first slide after the last one
+                }
+                cardContainer.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+    
+            // Function to move to the previous slide
+            function prevSlide() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                } else {
+                    currentIndex = cardCount - visibleCards; // Go to the last set of visible slides
+                }
+                cardContainer.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+    
+            // Auto-slide functionality
+            const autoSlide = setInterval(nextSlide, slideInterval);
+    
+            // Next and Previous buttons event listeners for manual sliding
+            nextBtn.addEventListener('click', () => {
+                clearInterval(autoSlide); // Stop auto-slide when the user clicks
+                nextSlide();
+            });
+    
+            prevBtn.addEventListener('click', () => {
+                clearInterval(autoSlide); // Stop auto-slide when the user clicks
+                prevSlide();
+            });
+        });
+
+
+        function showCategoryInfo(categoryId) {
+        // Hide all category info elements
+        document.querySelectorAll('.pro-head').forEach(element => {
+            element.style.display = 'none';
+        });
+        
+        // Show the corresponding category info element
+        document.getElementById(`pro-head-${categoryId}`).style.display = 'block';
+    }
+
+    function showRandomCategoryInfo() {
+        // Get all category IDs
+        const categoryIds = Array.from(document.querySelectorAll('.pro-head')).map(element => element.id.replace('pro-head-', ''));
+        
+        // Select a random category ID
+        const randomCategoryId = categoryIds[Math.floor(Math.random() * categoryIds.length)];
+        
+        // Show the corresponding category info element
+        showCategoryInfo(randomCategoryId);
+    }
+    
+    // Call the function to show a random category info on page load
+    document.addEventListener('DOMContentLoaded', showRandomCategoryInfo);
+
+
+
+ 
+
+
+   
+</script>  
+</body>
+</html>

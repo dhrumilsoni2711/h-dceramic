@@ -1,0 +1,99 @@
+{% include 'nav.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    
+
+    {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <script src="{% static 'js/alert.js' %}"></script>
+</head>
+<body>
+  
+  {% if messages %}
+        {% for message in messages %}
+            <div id="alert-message" style="display: none;">{{ message }}</div>
+        {% endfor %}
+  {% endif %}
+
+    <div class="card">
+        <div class="row">
+            <div class="col-md-8 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col">
+                            <h1><b>Shopping Cart</b></h1>
+                        </div>
+                        <div class="col align-self-center text-right text-muted">{{ products|length }} items</div>
+                    </div>
+                </div>
+            </div>
+            {% if products %}
+            {% for product in products %}
+            <div class="row main align-items-center">
+                <div class="col-2 card-image">
+                    <img class="img-fluid img" src="{{ product.image.url }}">
+                </div>
+                <div class="col">
+                    <div class="row name"><b>{{ product.name }}</b></div>
+                    <div class="row text-muted">Size: {{ product.size }}</div>
+                    <div class="row text-muted">Category: {{ product.category }}</div>
+                    <div class="row text-muted">Total cover: {{ product.total_square_footage }} Sq ft.</div>
+                </div>
+                <div class="col">
+                    <div class="qut">
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="product_id" value="{{ product.id }}">
+                            <input type="hidden" name="quantity_change" value="-1">
+                            <button type="submit" class="a btns text-muted">-</button>
+                        </form>
+                        <a href="#" class="qua a">{{ product.quantity }}</a>
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="product_id" value="{{ product.id }}">
+                            <input type="hidden" name="quantity_change" value="1">
+                            <button type="submit" class="a btns text-muted">+</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col">
+                    &#8377; {{ product.price }}
+                    <form method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ product.id }}">
+                        <button type="submit"   name="remove" class="close">&#10005;</button>
+                    </form>
+                </div>
+                
+                
+            </div>
+            {% endfor %}
+            <div class="row main">
+                
+                <a class="btn" href="{% url 'cartcheckout' %}">CHECKOUT</a>
+               
+                <div class="col totalp">TOTAL PRICE</div>
+                <div class="col total">&#8377; {{ total_price }}</div>
+                
+            </div>
+            {% else %}
+            <div class="alert alert-info text-center al" role="alert" style="width: 98%;font-size: 25px;">
+                    Your cart is empty. Add products to your cart to see them <a href="{% url 'shop' %}">here</a>!
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+</body>
+</html>

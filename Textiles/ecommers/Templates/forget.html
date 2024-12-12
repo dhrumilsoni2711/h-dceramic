@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/forget.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="{% static 'js/alert.js' %}"></script>
+    <title>Forget Password</title>
+</head>
+<body>
+    {% if messages %}
+    {% for message in messages %}
+        <div id="alert-message" style="display: none;">{{ message }}</div>
+    {% endfor %}
+{% endif %} 
+  <div class="container">
+    <h2 class="title">Forget Password</h2>
+    <form method="POST" class="form-container">
+        {% if not otp_sent and not otp_verified %}
+      <div class="input-box phone-number">
+          <input type="text" name="phone_number" required placeholder="Phone Number" value="{{ phone_number }}">
+          <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="phone-image" width="25px">
+          
+      </div>
+      {% if error %}
+          <p style="color:red;text-align: left;font-size: 14px;margin-top: 5px;margin-left: 5px;"><b>{{ error }}</b></p>
+      {% endif %}
+      {% csrf_token %}
+      
+
+      <div class="button">
+          <button type="submit" class="sotp">Send OTP</button>
+      </div>
+
+      {% elif otp_sent and not otp_verified %}
+      <div class="input-box otp">
+        <input type="text" name="otp" required placeholder="Enter OTP">
+        <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="otp-image" width="25px">
+      </div>
+      
+      {% csrf_token %}
+      <div class="button">
+          <button type="submit" class="votp">Verify OTP</button>
+      </div>
+     
+
+      {% elif otp_verified %}
+      {% csrf_token %}
+      <div class="input-box password">
+          <input type="password" name="password" required placeholder="8 characters long">
+          <img src="https://cdn-icons-png.flaticon.com/512/2489/2489659.png" alt="lock-image" width="22px">
+      </div>
+      <div class="input-box password">
+          <input type="password" name="conformpassword" required placeholder="Confirm New Password">
+          <img src="https://cdn-icons-png.flaticon.com/512/2489/2489659.png" alt="lock-image" width="22px">
+      </div>
+      {% csrf_token %}
+      <div class="button">
+          <button type="submit" class="new">Set New Password</button>
+      </div>
+      {% endif %}
+      
+      <div class="register">
+          <p>Don't you have an account? <a href="{% url 'register' %}">Register</a></p>
+      </div>
+      
+    </form>
+
+  </div>
+</body>
+</html>

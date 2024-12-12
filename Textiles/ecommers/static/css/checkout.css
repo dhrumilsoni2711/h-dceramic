@@ -1,0 +1,302 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  background: #EEECEB;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #4E5150;
+  font-size: 20px;
+
+}
+
+main {
+    height: auto;
+    display: flex;
+    column-gap: 100px;
+    margin-bottom: 30px;
+}
+
+.checkout-form {
+    width: 50%;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.checkout-form form h6 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.form-control {
+    margin: 5px 0px;
+    position: relative;
+}
+
+.form-control label:not([for="checkout-checkbox"]) {
+    display: block;
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.form-control input:not([type="checkbox"]) {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    border-radius: 10px;
+    outline: none;
+    border: 0.2px solid #4e515085;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.form-control input:not([type="checkbox"])::placeholder {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.form-control label[for="checkout-checkbox"] {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 10px;
+}
+
+.form-control > div {
+    position: relative;
+}
+
+.form-control > div span.fa {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(15px, -50%);
+}
+
+.form-group {
+    display: flex;
+    column-gap: 25px;
+}
+
+.checkbox-control {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.form-control-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.form-control-btn button {
+    padding: 10px 25px;
+    margin-top: 30px;
+    margin-right: 300px;
+    font-size: 15px;
+    color: #fff; 
+    background-color: #CD7F32;
+    border: 0;
+    border-radius: 7px;
+    letter-spacing: 0.5px;
+    font-weight: 200;
+    cursor: pointer;
+}
+
+.checkout-details {
+    width: 40%;
+    margin-top: 30px;
+    margin-right: 50px;
+}
+
+.checkout-details-inner {
+    background: #fafafa;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.checkout-lists {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    margin-bottom: 40px;
+    height: auto;
+}
+
+.card {
+    width: 100%;
+    display: flex;
+    column-gap: 15px;
+}
+
+.card-image {
+    width: 35%;
+}
+
+.card-image img {
+    width: 100%;
+    object-fit: fill;
+    border-radius: 10px;
+    height: 150px;
+}
+
+.card-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-name {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.card-price {
+    font-size: 15px;
+    font-weight: 500;
+    color: #F2994A;
+    margin-top: 5px;
+}
+
+.card-price span {
+    color: #4E5150;
+    text-decoration: line-through;
+    margin-left: 10px;
+}
+.cat{
+    font-size: 15px;
+    font-weight: 500;
+    color: #4E5150;
+    margin-top: 5px;
+}
+
+
+.card-wheel button {
+    background: #E0E0E0;
+    color: #828282;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.checkout-shipping, .checkout-total {
+    display: flex;
+    font-size: 16px;
+    padding: 5px 0px;
+    border-top: 1px solid #BDBDBD;
+    justify-content: space-between;
+}
+
+.checkout-shipping p  {
+    font-size: 14px;
+    font-weight: 500;
+}
+.checkout-total p  {
+    font-size: 17px;
+    font-weight: 700;  
+}
+
+
+@media screen and (max-width: 1024px) {
+    body {
+        width: 80%;
+    }
+
+    main {
+        column-gap: 70px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        width: 92%;
+    }
+
+    main {
+        flex-direction: column-reverse;
+        height: auto;
+        margin-bottom: 50px;
+    }
+
+    .checkout-form {
+        width: 100%;
+        margin-top: 35px;
+    }
+
+    .checkout-details {
+        width: 100%;
+    }
+
+
+
+    .qut{
+        display:flex;
+        align-items: center;
+      }
+      .btns{
+        background-color:white;
+        border:none;
+        margin-left:10px;
+        margin-right:10px;
+      }.btns:focus {
+        box-shadow: none;
+        outline: none;
+        border: none;
+        color: white;
+        
+      }
+
+      .qua{
+        margin-top:5px;
+        display: inline-block;
+        width: 150px;
+        height: 100px;
+        background-color: lightblue;
+        margin-right: 10px;
+
+
+      }
+   
+}
+
+/* General alert styles */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Success alert customization */
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: none; /* Removes the border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a soft shadow */
+}
+
+/* Additional margin for spacing */
+.mt-3 {
+    margin-top: 1rem;
+}
+
+/* Font weight for strong text */
+.alert strong {
+    font-weight: bold;
+}

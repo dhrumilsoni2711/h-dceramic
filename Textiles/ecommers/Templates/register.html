@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Register</title>
+    <style>
+        {% comment %} .input-box {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .input-box input {
+            padding-left: 30px; /* Add padding to make space for the icon */
+        }
+
+        .input-box i {
+            position: absolute;
+            left: 330px;
+            top: 69%;
+            transform: translateY(-50%);
+        } {% endcomment %}
+    </style>
+
+    <div class="container">
+        <h1>Register</h1>
+
+        <form method="POST" class="form-container" >
+            <div class="input-box email">
+                <input type="text" id="name" name="name" required placeholder="Name">
+                <img src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png" alt="user-image"  width="25px">
+            </div>
+            <div class="input-box email">
+                <input type="email" id="email" name="email" required placeholder="E-mail" >
+                <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="email-image" width="25px">
+            </div>
+            <div class="input-box email">
+                <input type="text" id="phonenumber" name="phonenumber" required placeholder="Phone No." >
+                <img src="https://cdn-icons-png.flaticon.com/512/483/483947.png" alt="phone-image" width="25px">
+            </div>
+            <div class="input-box email">
+                <input type="text" id="streetaddress" name="streetaddress" required placeholder="Street Address" >
+                <img src="https://cdn-icons-png.flaticon.com/512/2935/2935036.png" alt="address-image" width="25px">
+            </div>
+            <div class="input-box email">
+                <input type="text" id="city" name="city" required placeholder="City" >
+                <img src="https://cdn-icons-png.flaticon.com/512/1830/1830782.png" alt="country-image" width="25px">
+            </div>
+            <div class="input-box email">
+                <input type="text" id="state" name="state" required placeholder="State" >
+                <img src="https://cdn-icons-png.flaticon.com/512/684/684831.png" alt="state-image" width="25px">
+            </div>
+          
+            <div class="input-box email">
+                <input type="text" id="pincode" name="pincode" required placeholder="Pin Code" >
+                <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="pincode-image" width="25px">
+            </div>
+            <div class="input-box password">
+                <input type="password" id="password" name="password" required placeholder="Password must be at least 8 characters long">
+                <img src="https://cdn-icons-png.flaticon.com/512/2489/2489659.png" alt="password-image" width="25px">
+            </div>
+            {% csrf_token %}
+            {% if messages %}
+            <ul class="form-errors">
+                {% for message in messages %}
+                <div style="color: red;margin-left: 5px;"><b>{{ message }}</b></div> 
+                {% endfor %}
+            </ul>
+            {% endif %}
+          
+            <div class="button">
+                <button class="register" type="submit">Register</button>
+            </div>
+           
+        </form>
+    </div>
+</body>
+</html>

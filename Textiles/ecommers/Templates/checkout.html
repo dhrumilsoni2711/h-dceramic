@@ -1,0 +1,155 @@
+{% include 'nav.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+     {% load static %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    <script src="{% static 'js/alert.js' %}"></script>
+</head>
+<body>
+  
+  {% if messages %}
+        {% for message in messages %}
+            <div id="alert-message" style="display: none;">{{ message }}</div>
+        {% endfor %}
+  {% endif %}
+
+	<main>
+		
+		<section class="checkout-form">
+			<form  method="post" >  <!-- Ensure you have the URL name for your checkout view -->
+                {% csrf_token %}
+                
+
+                <h6>Contact information</h6>
+                <div class="form-control">
+                    <label for="checkout-email">E-mail</label>
+                    <div>
+                        <span class="fa fa-envelope"></span>
+                        <input type="email" id="checkout-email" name="checkout-email" placeholder="Enter your email..."
+                               value="{{ info.email }}" readonly>
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label for="checkout-phone">Phone</label>
+                    <div>
+                        <span class="fa fa-phone"></span>
+                        <input type="tel" name="checkout-phone" id="checkout-phone" placeholder="Enter your phone..."
+                               value="{{ info.phonenumber }}">
+                    </div>
+                </div>
+                <br>
+                <h6>Shipping address</h6>
+                <div class="form-control">
+                    <label for="checkout-name">Full name</label>
+                    <div>
+                        <span class="fa fa-user-circle"></span>
+                        <input type="text" id="checkout-name" name="checkout-name" placeholder="Enter your name..."
+                               value="{{ info.name }}">
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label for="checkout-address">Address</label>
+                    <div>
+                        <span class="fa fa-home"></span>
+                        <input type="text" name="checkout-address" id="checkout-address" placeholder="Your address..."
+                               value="{{ info.streetaddress }}">
+                    </div>
+                </div>
+                <div class="form-control">
+                    <label for="checkout-city">City</label>
+                    <div>
+                        <span class="fa fa-building"></span>
+                        <input type="text" name="checkout-city" id="checkout-city" placeholder="Your city..."
+                               value="{{ info.city }}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-control">
+                        <label for="checkout-country">State</label>
+                        <div>
+                            <span class="fa fa-globe"></span>
+                            <input type="text" name="checkout-country" id="checkout-country" placeholder="Your country..."
+                                   value="{{ info.state }}" list="country-list">
+                            
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <label for="checkout-postal">Postal code</label>
+                        <div>
+                            <span class="fa fa-archive"></span>
+                            <input type="text" name="checkout-postal" id="checkout-postal" placeholder="Your postal code..."
+                                   value="{{ info.pincode }}">
+                        </div>
+                    </div>
+                </div>
+                <h6>Payment Method</h6>
+                <div style="display: flex; flex-direction: column; font-size: 16px;">
+                    <div>
+                        <input type="radio" id="cod" name="payment_mode" value="cash_on_delivery" checked>
+                        <label for="cod" style="margin-left: 0;">Cash on Delivery</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="online" name="payment_mode" value="online_payment">
+                        <label for="online" style="margin-left: 0;">Online Payment</label>
+                    </div>
+                </div>
+                
+                
+                
+
+    <div class="form-control-btn">
+        <button type="submit" name="continue">Continue</button>
+    </div>
+            </form>
+            
+		</section>
+
+		<section class="checkout-details">
+            <div class="checkout-details-inner">
+                <div class="checkout-lists">
+                    {% for product in product %}
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </div>
+                        <div class="card-details">
+                            <div class="card-name">{{ product.name }}</div>
+                            <div class="cat">{{ product.category }}</div>
+                            <div class="cat">Qut: {{ product.qut }}</div>
+                            <div class="card-price">&#8377; {{ product.price }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="checkout-shipping">
+                    <h5>SubTotal</h5>
+                    <p>&#8377; {{ total_price }}</p>
+                </div>
+                <div class="checkout-shipping">
+                    <h5>Tax (10%)</h5>
+                    <p>&#8377; {{ tax }}</p>
+                </div>
+                <div class="checkout-shipping">
+                    <h5>Shipping</h5>
+                    <p>&#8377; 500</p>
+                </div>
+                <div class="checkout-total">
+                    <h4>Total</h4>
+                    <p>&#8377; {{ total }}</p>
+                </div>
+            </div>
+        </section>
+        
+
+	</main>
+
+	
+    {% include 'footer.html'%}
+</body>
+</html>

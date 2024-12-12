@@ -1,0 +1,49 @@
+
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+    </head>
+    <body>
+<header>
+    <nav class="navbar">
+        <div class="logo">
+          <img src="{% static 'ecommers/images/logo.png' %}" alt="Logo">
+          <h1 class="he">H & D Ceramics</h1>
+        </div>
+        <div class="na">
+          <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/shop">Shop</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="icons">
+        
+            <li class="dropdown">
+                <a href="#" class="dropbtn"><i class="fas fa-user"></i></a>
+                {% if is_logged_in %}
+                <div class="dropdown-content">
+                    <a href="/logout"><i class="fa-solid fa-right-to-bracket fa-flip-horizontal"></i> LOGOUT</a>
+                    <a href="/profile"><i class="fa-solid fa-address-card"></i> PROFILE</a>
+                </div>
+               {% else %}
+                <div class="dropdown-content">
+                  <a href="/login"><i class="fa-solid fa-right-to-bracket"></i> LOGIN</a>
+                  <a href="/register"><i class="fa-solid fa-user-plus"></i> REGISTER</a>
+              </div> 
+              {% endif %}
+            </li>
+            <a href="/cart"><i class="fas fa-shopping-cart"></i></a>
+            <a href="{% static 'files/Tiles Catalogue.pdf' %}" download>
+                <i class="fa-solid fa-download"></i>
+            </a>
+            
+        </div>
+    </nav>
+
+    
+</header>
+</body>
+</html>
